@@ -92,7 +92,7 @@ describe('more operations', function(){
     it('try SVF after the fact', function(){
 
 	var ce = new class_expression(null, true);    
-	ce.as_svf('GO:123', 'RO:456');
+	ce.as_svf('RO:456', 'GO:123');
 	
 	assert.isTrue(ce.id().length == 36,
 		     '[ssvf] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
@@ -170,7 +170,7 @@ describe('more operations', function(){
 	var int_ce = new class_expression();
 	int_ce.as_set('intersection', ['GO:123', 'GO:456']);
 	var ce = new class_expression();
-	ce.as_svf(int_ce, 'RO:123');
+	ce.as_svf('RO:123', int_ce);
 
 	assert.isTrue(ce.id().length == 36,
     		     '[svf(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
@@ -213,6 +213,53 @@ describe('more operations', function(){
 	    '[svf(int)] correct nested structure');
 	
     });
+});
+
+describe('free peanuts', function(){
+
+    it("they're complementary", function(){
+
+	var int_ce = new class_expression();
+	int_ce.as_set('intersection', ['GO:123', 'GO:456']);
+	var ce = new class_expression();
+	ce.as_complement(int_ce);
+	
+	assert.isTrue(ce.id().length == 36,
+    		      '[complement(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
+	assert.isTrue(ce.nested_p(), '[complement(int)] sets always a little nested');
+	assert.isFalse(ce.inferred_p(), '[complement(int)] is not inferred');
+	
+	assert.equal(ce.category(), 'complement', '[complement(int)] graphically itself');
+	assert.equal(ce.type(), 'complement', '[complment(int)] instance is type of complement');
+	
+	assert.isNull(ce.class_id(), '[complement(int)] has null ID--nested');
+	assert.isNull(ce.class_label(), '[complement(int)] has null label--nested');
+	
+	assert.equal(ce.complement_class_expression().type(), 'intersection',
+		     '[complement(int)] has complement ce');
+	
+	assert.deepEqual(
+	    ce.structure(),
+	    {
+		"type": "complement",
+		"operand": {
+		    'type': 'intersection',
+		    "expressions": [
+			{
+			    "type": "class",
+			    "id": "GO:123"
+			},
+			{
+			    "type": "class",
+			    "id": "GO:456"
+			}
+				 ]
+		}
+	    },
+	    '[complement(int)] correct nested structure');
+
+    });
+
 });
 
 // // Toy REPL.
