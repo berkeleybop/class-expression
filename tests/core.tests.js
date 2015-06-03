@@ -92,7 +92,7 @@ describe('more operations', function(){
     it('try SVF after the fact', function(){
 
 	var ce = new class_expression(null, true);    
-	ce.as_svf('GO:123', 'RO:456');
+	ce.as_svf('RO:456', 'GO:123');
 	
 	assert.isTrue(ce.id().length == 36,
 		     '[ssvf] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
@@ -170,7 +170,7 @@ describe('more operations', function(){
 	var int_ce = new class_expression();
 	int_ce.as_set('intersection', ['GO:123', 'GO:456']);
 	var ce = new class_expression();
-	ce.as_svf(int_ce, 'RO:123');
+	ce.as_svf('RO:123', int_ce);
 
 	assert.isTrue(ce.id().length == 36,
     		     '[svf(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
