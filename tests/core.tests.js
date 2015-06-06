@@ -259,7 +259,29 @@ describe('free peanuts', function(){
 	    '[complement(int)] correct nested structure');
 
     });
+});
+    
+describe('expressing ourselves', function(){
 
+    it("strings representations (! intersection)", function(){
+
+	var int_ce = new class_expression();
+	int_ce.as_set('intersection', ['GO:123', 'GO:456']);
+	var ce = new class_expression();
+	ce.as_complement(int_ce);
+	
+	assert.equal(ce.to_string(), '![intersection[2]]');
+    });
+    
+    it("strings representations (svf intersection)", function(){
+
+	var int_ce = new class_expression();
+	int_ce.as_set('intersection', ['GO:123', 'GO:456']);
+	var ce = new class_expression();
+	ce.as_svf('RO:123', int_ce);
+
+	assert.equal(ce.to_string(), 'RO:123(intersection[2])');
+    });
 });
 
 // // Toy REPL.
