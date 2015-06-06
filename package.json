@@ -43,13 +43,17 @@
         "gulp-mocha": "^2.0.1",
         "gulp-pandoc": "^0.2.1",
         "gulp-rename": "^1.2.2",
-        "gulp-uglify": "^1.2.0"
+        "gulp-shell": "^0.4.2",
+        "gulp-uglify": "^1.2.0",
+        "jsdoc": "^3.3.0",
+        "jsdoc-baseline": "git://github.com/hegemonic/jsdoc-baseline.git#74d1dc8075"
     },
     "bundleDependencies": [],
     "private": false,
     "directories": {
         "doc": "doc",
-        "test": "tests"
+        "lib": "lib",
+        "tests": "tests"
     },
     "main": "lib/class_expression.js",
     "bugs": {
@@ -57,6 +61,6 @@
     },
     "scripts": {
         "update-docs": "git checkout gh-pages && git pull && git merge master && gulp doc && git commit -a -m 'bump docs' && git push && git checkout master",
-        "test": "gulp test"
+        "test": "./node_modules/.bin/gulp test"
     }
 }
