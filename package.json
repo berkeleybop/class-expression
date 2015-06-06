@@ -1,6 +1,6 @@
 {
     "name": "class-expression",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "license": "BSD-3-Clause",
     "description": "A handling library for OWL-style class expressions in JavaScript.",
     "keywords": [
