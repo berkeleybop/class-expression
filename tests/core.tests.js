@@ -274,7 +274,7 @@ describe('expressing ourselves', function(){
 	var ce = new class_expression();
 	ce.as_svf('RO:123', int_ce);
 
-	assert.equal(ce.to_string(), 'RO:123(intersection[2])');
+	assert.equal(ce.to_string(), 'svf[RO:123](intersection[2])');
     });
 });
 
