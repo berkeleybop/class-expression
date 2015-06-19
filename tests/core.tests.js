@@ -242,7 +242,7 @@ describe('free peanuts', function(){
 	    ce.structure(),
 	    {
 		"type": "complement",
-		"operand": {
+		"filler": {
 		    'type': 'intersection',
 		    "expressions": [
 			{
