@@ -30,7 +30,6 @@ describe('basic operations', function(){
 	assert.isTrue(ce.id().length == 36,
 		      'id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isFalse(ce.nested_p(), 'not nested');
-	assert.isFalse(ce.inferred_p(), 'not inferred');
 	
 	assert.equal(ce.category(), 'unknown', 'graphically a mystery');
 	assert.isNull(ce.type(), 'instance of nope');
@@ -65,7 +64,6 @@ describe('basic operations', function(){
 	    assert.isTrue(ce.id().length == 36,
 			  '['+i+'] like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	    assert.isFalse(ce.nested_p(), '['+i+'] not nested');
-	    assert.isFalse(ce.inferred_p(), '['+i+'] not inferred');
 	    
 	    assert.equal(ce.category(), 'instance_of',
 			 '['+i+'] graphically, is a simple class');
@@ -91,13 +89,12 @@ describe('more operations', function(){
 
     it('try SVF after the fact', function(){
 
-	var ce = new class_expression(null, true);    
+	var ce = new class_expression(null);
 	ce.as_svf('RO:456', 'GO:123');
 	
 	assert.isTrue(ce.id().length == 36,
 		     '[ssvf] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[ssvf] svf always a little nested');
-	assert.isTrue(ce.inferred_p(), '[ssvf] /is/ inferred');  //change of pace
 	assert.equal(ce.category(), 'RO:456',
 		     '[ssvf] graphically, is a simple class');
 	assert.equal(ce.type(), 'svf', '[ssvf] instance is type of svf');
@@ -135,7 +132,6 @@ describe('more operations', function(){
 	assert.isTrue(ce.id().length == 36,
     		     '[sint] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[sint] sets always a little nested');
-	assert.isFalse(ce.inferred_p(), '[sint] is not inferred');
 	
 	assert.equal(ce.category(), 'intersection', '[sint] graphically, is nested');
 	assert.equal(ce.type(), 'intersection', '[sint] instance is type of intersection');
@@ -175,7 +171,6 @@ describe('more operations', function(){
 	assert.isTrue(ce.id().length == 36,
     		     '[svf(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[svf(int)] sets always a little nested');
-	assert.isFalse(ce.inferred_p(), '[svf(int)] is not inferred');
 	
 	assert.equal(ce.category(), 'RO:123', '[svf(int)] graphically a relation');
 	assert.equal(ce.type(), 'svf', '[svf(int)] instance is type of svf');
@@ -227,7 +222,6 @@ describe('free peanuts', function(){
 	assert.isTrue(ce.id().length == 36,
     		      '[complement(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[complement(int)] sets always a little nested');
-	assert.isFalse(ce.inferred_p(), '[complement(int)] is not inferred');
 	
 	assert.equal(ce.category(), 'complement', '[complement(int)] graphically itself');
 	assert.equal(ce.type(), 'complement', '[complment(int)] instance is type of complement');
