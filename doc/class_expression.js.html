@@ -573,11 +573,11 @@ class_expression.prototype.to_string = function(front_str, back_str){
 	    &#x27;[&#x27; + _inner_lbl(anchor.complement_class_expression()) + &#x27;]&#x27;;
     }else if( t == &#x27;svf&#x27; ){
 	// SVF a little harder.
-	var ctype = anchor.category();
+	var ctype = anchor.property_label();
 
 	// Probe it a bit.
 	var ce = anchor.svf_class_expression();
-	ret = ctype + &#x27;(&#x27; + _inner_lbl(ce) + &#x27;)&#x27;;
+	ret = &#x27;svf[&#x27; + ctype + &#x27;](&#x27; + _inner_lbl(ce) + &#x27;)&#x27;;
     }else{
 	ret = &#x27;???&#x27;;
     }
