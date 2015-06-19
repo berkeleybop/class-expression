@@ -25,7 +25,7 @@
         <div id="jsdoc-main" role="main">
           <header class="page-header">
             <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-inner">inner</span></div><small><a href="module-class-expression.html">class-expression</a>~<wbr></small><span class="symbol-name">class_expression</span></h1>
-            <p class="source-link">Source: <a href="class_expression.js.html#source-line-49">class_expression.<wbr>js:49</a></p>
+            <p class="source-link">Source: <a href="class_expression.js.html#source-line-44">class_expression.<wbr>js:44</a></p>
             <dl class="dl-compact">
             </dl>
           </header>
@@ -59,13 +59,13 @@
                     <dt><a href="module-class-expression-class_expression.html#as_set">as_set()</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="module-class-expression-class_expression.html#as_svf">as_svf()</a></dt>
-                    <dd>
-                    </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="module-class-expression-class_expression.html#as_svf">as_svf()</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="module-class-expression-class_expression.html#category">category()</a></dt>
                     <dd>
                     </dd>
@@ -84,19 +84,16 @@
                     <dt><a href="module-class-expression-class_expression.html#id">id()</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="module-class-expression-class_expression.html#inferred_p">inferred_p()</a></dt>
-                    <dd>
-                    </dd>
                     <dt><a href="module-class-expression-class_expression.html#nested_p">nested_p()</a></dt>
-                    <dd>
-                    </dd>
-                    <dt><a href="module-class-expression-class_expression.html#parse">parse()</a></dt>
                     <dd>
                     </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="module-class-expression-class_expression.html#parse">parse()</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="module-class-expression-class_expression.html#property_id">property_id()</a></dt>
                     <dd>
                     </dd>
@@ -112,7 +109,7 @@
                     <dt><a href="module-class-expression-class_expression.html#svf_class_expression">svf_class_expression()</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="module-class-expression-class_expression.html#to_string">to_string()</a></dt>
+                    <dt><a href="module-class-expression-class_expression.html#to_string">to_string(front_str, back_str)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="module-class-expression-class_expression.html#type">type()</a></dt>
@@ -124,7 +121,7 @@
             </div>
           </section>
           <section>
-            <h2 id="class_expression">new&nbsp;<span class="symbol-name">class_expression</span><span class="signature"><span class="signature-params">(in_type, inferred_p)</span></span></h2>
+            <h2 id="class_expression">new&nbsp;<span class="symbol-name">class_expression</span><span class="signature"><span class="signature-params">(in_type)</span></span></h2>
             <p>Core constructor.</p>
             <p>The argument &quot;in_type&quot; may be:</p>
             <ul>
@@ -136,7 +133,7 @@
               <li>null (user will load or interactively create one)</li>
             </ul>
             <section>
-              <h3>Parameters</h3>
+              <h3>Parameter</h3>
               <table class="jsdoc-details-table">
                 <thead>
                   <tr>
@@ -159,20 +156,6 @@
                     </td>
                     <td>
                       <p>the raw type description (see above)</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p>inferred_p</p>
-                    </td>
-                    <td>
-                      <p>Boolean</p>
-                    </td>
-                    <td>
-                      <p>&nbsp;</p>
-                    </td>
-                    <td>
-                      <p>(optional) whether or not the type is inferred (default false)</p>
                     </td>
                   </tr>
                 </tbody>
@@ -466,15 +449,6 @@
                   <p><code>String</code>&nbsp;string</p>
                 </dd>
               </dl>
-              <h3 id="inferred_p"><span class="symbol-name">inferred_p</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Boolean</span></span></h3>
-              <p>Get whether or not the class expression is set to be identified as &quot;inferred&quot;.
-              </p>
-              <dl class="dl-compact">
-                <dt>Returns</dt>
-                <dd>
-                  <p><code>Boolean</code>&nbsp;true or false</p>
-                </dd>
-              </dl>
               <h3 id="nested_p"><span class="symbol-name">nested_p</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Boolean</span></span></h3>
               <p>If the type has a recursive frame.</p>
               <dl class="dl-compact">
@@ -509,7 +483,7 @@
               </dl>
               <h3 id="signature"><span class="symbol-name">signature</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> String</span></span></h3>
               <p>A cheap way of identifying if two class_expressions are the same. This essentially returns a string of the main attributes of a type. It is meant to be semi-unique and collide with dupe inferences.</p>
-              <p>BUG/WARNING: At this point, colliding signatures should mean a dupe, but non-colliding signamtes does <em>not</em> guarantee that they are not dupes (think different intersection orderings).</p>
+              <p>BUG/WARNING: At this point, colliding signatures should mean a dupe, but non-colliding signatures does <em>not</em> guarantee that they are not dupes (think different intersection orderings).</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
@@ -533,8 +507,51 @@
                   <p><code>(String or null)</code>&nbsp;type or null</p>
                 </dd>
               </dl>
-              <h3 id="to_string"><span class="symbol-name">to_string</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> String</span></span></h3>
+              <h3 id="to_string"><span class="symbol-name">to_string</span><span class="signature"><span class="signature-params">(front_str, back_str)</span>&nbsp;&rarr; <span class="signature-returns"> String</span></span></h3>
               <p>An attempt to have a simple attempt at a string representation for a class expression.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>front_str</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) start the output string with (default '')</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>back_str</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) end the output string with (default '')</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
@@ -559,7 +576,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on June 5, 2015.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on June 19, 2015.
       </p>
     </div>
   </footer>
