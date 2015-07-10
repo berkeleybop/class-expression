@@ -247,7 +247,7 @@ describe('free peanuts', function(){
 			    "type": "class",
 			    "id": "GO:456"
 			}
-				 ]
+		    ]
 		}
 	    },
 	    '[complement(int)] correct nested structure');
