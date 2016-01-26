@@ -278,6 +278,37 @@ describe('expressing ourselves', function(){
     });
 });
 
+describe('writers', function(){
+
+    it('take a look at the basic string writer', function(){
+
+	var ce = new class_expression('GO:0022008');
+	
+	assert.equal(ce.class_id(), 'GO:0022008', 'id is string');
+	assert.equal(ce.class_label(), 'GO:0022008', 'label is string');
+	assert.equal(ce.to_string(), 'GO:0022008', 'string is string');
+	assert.equal(ce.to_string_plus(), 'GO:0022008', 'extra is string');
+
+    });
+
+    it('ouput of more complicated entity', function(){
+
+	var ce = new class_expression({
+	    type: 'class',
+	    id: 'GO:0022008',
+	    label: 'neurogenesis'
+	});
+	
+	assert.equal(ce.class_id(), 'GO:0022008', 'id is string');
+	assert.equal(ce.class_label(), 'neurogenesis', 'label is string');
+	assert.equal(ce.to_string(), 'neurogenesis', 'string is string');
+	assert.equal(ce.to_string_plus(), '[GO:0022008] neurogenesis',
+		     'extra is string');
+
+    });
+
+});
+
 // // Toy REPL.
 // (function(){
 
