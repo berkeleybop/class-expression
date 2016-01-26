@@ -13,7 +13,7 @@
 
 var chai = require('chai');
 chai.config.includeStack = true;
-assert = chai.assert;
+var assert = chai.assert;
 
 var us = require('underscore');
 var each = us.each;
@@ -27,7 +27,7 @@ describe('basic operations', function(){
 
 	var ce = new class_expression();
 	
-	assert.isTrue(ce.id().length == 36,
+	assert.isTrue(ce.id().length === 36,
 		      'id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isFalse(ce.nested_p(), 'not nested');
 	
@@ -61,7 +61,7 @@ describe('basic operations', function(){
 	// Make sure that all constructors behave as expected.
 	each([ce1, ce2, ce3], function(ce, i){
 
-	    assert.isTrue(ce.id().length == 36,
+	    assert.isTrue(ce.id().length === 36,
 			  '['+i+'] like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	    assert.isFalse(ce.nested_p(), '['+i+'] not nested');
 	    
@@ -92,7 +92,7 @@ describe('more operations', function(){
 	var ce = new class_expression(null);
 	ce.as_svf('RO:456', 'GO:123');
 	
-	assert.isTrue(ce.id().length == 36,
+	assert.isTrue(ce.id().length === 36,
 		     '[ssvf] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[ssvf] svf always a little nested');
 	assert.equal(ce.category(), 'RO:456',
@@ -129,7 +129,7 @@ describe('more operations', function(){
 	ce.as_set('intersection',
     		  ['GO:123', new class_expression('GO:456')]);
 	
-	assert.isTrue(ce.id().length == 36,
+	assert.isTrue(ce.id().length === 36,
     		     '[sint] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[sint] sets always a little nested');
 	
@@ -168,7 +168,7 @@ describe('more operations', function(){
 	var ce = new class_expression();
 	ce.as_svf('RO:123', int_ce);
 
-	assert.isTrue(ce.id().length == 36,
+	assert.isTrue(ce.id().length === 36,
     		     '[svf(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[svf(int)] sets always a little nested');
 	
@@ -219,7 +219,7 @@ describe('free peanuts', function(){
 	var ce = new class_expression();
 	ce.as_complement(int_ce);
 	
-	assert.isTrue(ce.id().length == 36,
+	assert.isTrue(ce.id().length === 36,
     		      '[complement(int)] id is like 8ccbf846-d7e8-4d86-9e5c-0b48827d178d');
 	assert.isTrue(ce.nested_p(), '[complement(int)] sets always a little nested');
 	
