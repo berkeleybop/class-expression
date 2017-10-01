@@ -257,14 +257,14 @@ describe('free peanuts', function(){
     
 describe('expressing ourselves', function(){
 
-    it("strings representations (! intersection)", function(){
+    it("strings representations (NOT intersection)", function(){
 
 	var int_ce = new class_expression();
 	int_ce.as_set('intersection', ['GO:123', 'GO:456']);
 	var ce = new class_expression();
 	ce.as_complement(int_ce);
 	
-	assert.equal(ce.to_string(), '![intersection[2]]');
+	assert.equal(ce.to_string(), 'NOT[intersection[2]]');
     });
     
     it("strings representations (svf intersection)", function(){
